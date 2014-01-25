@@ -2,7 +2,7 @@ local function combine_textures(t1, t2, t3, t4)
 	return "[combine:32x32:0,0="..t1..":0,16="..t2..":16,16="..t3..":16,0="..t4
 end
 
-minetest.register_node("mblocks:container", {
+minetest.register_node("microblocks:container", {
 	drawtype = "airlike",
 	paramtype = "light",
 	pointable = "false",
@@ -69,8 +69,8 @@ local function get_nodebox(T)
 end
 
 local function change_node(pos, T)
-	local node = {name = "mblocks:container"}
-	minetest.set_node_with_def(pos, node, minetest.registered_nodes["mblocks:container"],
+	local node = {name = "microblocks:container"}
+	minetest.set_node_with_def(pos, node, minetest.registered_nodes["microblocks:container"],
 		{
 			drawtype = "nodebox",
 			pointable = "true",
@@ -172,23 +172,37 @@ local function on_place(itemstack, user, pointed_thing)
 	end
 end
 
-minetest.register_craftitem("mblocks:wood", {
+minetest.register_craftitem("microblocks:wood", {
 	description = "Wood microblock",
 	inventory_image = "default_wood.png",
 	on_place = on_place,
 	sname = "default:wood",
 })
 
-minetest.register_craftitem("mblocks:stone", {
+minetest.register_craftitem("microblocks:stone", {
 	description = "Stone microblock",
 	inventory_image = "default_stone.png",
 	on_place = on_place,
 	sname = "default:stone",
 })
 
-minetest.register_craftitem("mblocks:mese", {
+minetest.register_craftitem("microblocks:mese", {
 	description = "Mese microblock",
 	inventory_image = "default_mese.png",
 	on_place = on_place,
 	sname = "default:mese",
+})
+
+minetest.register_craftitem("microblocks:tree", {
+	description = "Tree microblock",
+	inventory_image = "default_tree.png",
+	on_place = on_place,
+	sname = "default:tree",
+})
+
+minetest.register_craftitem("microblocks:leaves", {
+	description = "Leaves microblock",
+	inventory_image = "default_leaves.png",
+	on_place = on_place,
+	sname = "default:leaves",
 })
