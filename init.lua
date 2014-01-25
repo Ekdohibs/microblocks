@@ -69,16 +69,17 @@ local function get_nodebox(T)
 end
 
 local function change_node(pos, T)
-	local node = {name = "microblocks:container"}
-	minetest.set_node_with_def(pos, node, minetest.registered_nodes["microblocks:container"],
-		{
-			drawtype = "nodebox",
-			pointable = "true",
-			paramtype = "light",
-			node_box = get_nodebox(T),
-			tiles = get_node_textures(T),
-			selection_box = get_nodebox(T),
-		})
+	if minetest.get_node(pos).name ~= "microblocks:container" then
+		minetest.set_node(pos, {name = "microblocks:container"})
+	end
+	minetest.set_def(pos, {
+		drawtype = "nodebox",
+		pointable = "true",
+		paramtype = "light",
+		node_box = get_nodebox(T),
+		tiles = get_node_textures(T),
+		selection_box = get_nodebox(T),
+	})
 	local meta = minetest.get_meta(pos)
 	meta:set_string("contained_nodes", minetest.serialize(T))
 end
